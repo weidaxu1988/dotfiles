@@ -55,4 +55,4 @@ done
 
 echo
 echo "Homebrew dependencies:"
-echo "  brew install starship zsh-autosuggestions zsh-syntax-highlighting pyenv nvm"
+echo "  brew install starship zsh-autosuggestions zsh-syntax-highlighting pyenv node && brew pin node"

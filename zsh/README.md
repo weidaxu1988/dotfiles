@@ -37,7 +37,7 @@ Dependencies, all from Homebrew. Nothing is vendored into
 a missing install degrades quietly instead of erroring on every prompt.
 
 ```sh
-brew install starship zsh-autosuggestions zsh-syntax-highlighting pyenv nvm
+brew install starship zsh-autosuggestions zsh-syntax-highlighting pyenv node && brew pin node
 ```
 
 `zshrc` sources `zsh-syntax-highlighting` last: it wraps every ZLE widget

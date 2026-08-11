@@ -87,12 +87,11 @@ alias kb="kubectl"
 # The PATH half is done in .zprofile.
 command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
-# nvm defines a shell function, and functions are not inherited by child
-# processes -- so unlike everything else here it has to be re-sourced per
-# interactive shell rather than once in .zprofile.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
-[ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
+# node comes from Homebrew, pinned -- no version manager. Nothing here needs
+# per-project node versions, and nvm cost 0.42s of every interactive shell.
+# If that changes, use fnm or volta rather than nvm: both are binaries rather
+# than shell functions, so they also work in scripts and non-interactive
+# shells.
 
 # ssh agent
 # eval "$(ssh-agent -s)"

@@ -6,7 +6,7 @@ Shell and terminal config for two machines. Git is the single source of truth
 ```sh
 git clone <url> ~/dotfiles
 ~/dotfiles/install.sh
-brew install starship zsh-autosuggestions zsh-syntax-highlighting pyenv nvm
+brew install starship zsh-autosuggestions zsh-syntax-highlighting pyenv node && brew pin node
 ```
 
 `install.sh --check` verifies the links without changing anything.
