@@ -1,0 +1,12 @@
+# Belt and braces. Secrets are supposed to live outside this repo entirely
+# (~/.config/secrets.zsh, ~/.config/fish/conf.d/claude-secret.fish); this
+# catches them if one is ever copied in by accident.
+secrets*
+*secret*
+*token*
+*.pem
+*.key
+.env
+.env.*
+
+.DS_Store

@@ -1,0 +1,52 @@
+# ~/.zprofile -- login shells only, read after /etc/zprofile.
+#
+# Everything that sets an environment variable belongs here rather than in
+# .zshrc: exported variables are inherited by child processes, so a login
+# shell only needs to do this work once.
+#
+# It has to be here rather than in .zshenv because macOS runs
+# /usr/libexec/path_helper from /etc/zprofile, which rebuilds PATH from
+# /etc/paths and appends whatever was already set. Anything prepended in
+# .zshenv gets pushed to the back of PATH; anything prepended here stays
+# in front.
+#
+# Interactive-only setup (prompt, aliases, completion, plugins) goes in .zshrc.
+
+# Homebrew. Must come first: it sets HOMEBREW_PREFIX and puts brew-installed
+# tools (pyenv, starship, ...) on PATH for the lines below.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# User-installed CLI tools (graphify, graphify-mcp, ...)
+export PATH="$HOME/.local/bin:$PATH"
+
+# Rust
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+# Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# pyenv. Only the PATH half here; `pyenv init -` in .zshrc adds completions
+# and the `pyenv` shell function, which are interactive-only.
+# PYENV_VERSION is what `pyenv shell <v>` sets, minus the shell function.
+export PYENV_ROOT="$HOME/.pyenv"
+if command -v pyenv >/dev/null; then
+  eval "$(pyenv init --path)"
+  export PYENV_VERSION=3.13.7
+fi
+
+# Locale
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Proxy
+# export https_proxy=http://127.0.0.1:6152
+# export http_proxy=http://127.0.0.1:6152
+# export all_proxy=socks5://127.0.0.1:6153
+
+# Claude Code
+export CLAUDE_CODE_NO_FLICKER=1
+export ANTHROPIC_BASE_URL="https://api.903336.xyz"
+
+# Secrets: tokens live in ~/.config/secrets.zsh (mode 600, machine-local,
+# never synced to iCloud). See README.md in this directory.
+[ -f "$HOME/.config/secrets.zsh" ] && source "$HOME/.config/secrets.zsh"

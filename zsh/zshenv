@@ -1,0 +1,9 @@
+# ~/.zshenv -- read by EVERY zsh process, including every script and every
+# `ssh host 'cmd'`. Keep it empty.
+#
+# Anything put here runs on every script invocation, and on macOS any PATH set
+# here is reordered by /usr/libexec/path_helper (run from /etc/zprofile)
+# straight afterwards.
+#
+#   environment variables, PATH  -> .zprofile
+#   prompt, aliases, plugins     -> .zshrc

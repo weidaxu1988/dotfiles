@@ -1,0 +1,51 @@
+# ============================================
+# Ghostty Configuration — performance-first
+# Reload: Cmd+Shift+,
+# ============================================
+
+# --- Typography ---
+font-family = "Maple Mono NF CN"
+font-size = 14
+font-thicken = true
+adjust-cell-height = 2
+
+# --- Theme (零性能开销,保留) ---
+theme = Catppuccin Mocha
+
+# --- Window / Appearance ---
+# 性能优先:不透明背景 + 无模糊(原 background-blur 是最大 GPU 开销,已移除)
+background-opacity = 1
+macos-titlebar-style = native
+window-padding-x = 10
+window-padding-y = 8
+window-save-state = always
+window-theme = auto
+
+# --- Cursor ---
+cursor-style = bar
+cursor-style-blink = true
+cursor-opacity = 0.8
+
+# --- Quick Terminal ---
+quick-terminal-position = top
+quick-terminal-screen = mouse
+quick-terminal-autohide = true
+quick-terminal-animation-duration = 0.15
+
+# --- Security ---
+clipboard-paste-protection = true
+clipboard-paste-bracketed-safe = true
+
+# --- Shell Integration (ssh-terminfo/ssh-env 修复远程 SSH 输入错乱) ---
+shell-integration = detect
+shell-integration-features = ssh-env,ssh-terminfo
+
+# --- Scrollback (字节 / 每个分屏) ---
+scrollback-limit = 10000000
+
+# --- Keybindings (只留真正自定义的;与默认重复的已删) ---
+keybind = cmd+shift+left=previous_tab
+keybind = cmd+shift+right=next_tab
+keybind = cmd+shift+e=equalize_splits
+keybind = cmd+shift+f=toggle_split_zoom
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
